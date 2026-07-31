@@ -18,7 +18,7 @@
       letter-spacing: 0.9px;
     }
 
-#about p, #team p{ text-align:justify; }
+    #about p, #team p{ text-align:justify; }
 
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Libre Baskerville', serif;
@@ -34,7 +34,6 @@
       }
     }
     
-
     #home h1 {
       font-weight: bold;
     }
@@ -67,6 +66,100 @@
       transition: transform 0.4s ease, opacity 0.3s ease, background-color 0.3s ease;
     }
 
+    /* Partner Pill Selector */
+    .partner-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: rgba(255,255,255,0.85);
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      padding: 6px 18px 6px 6px;
+      cursor: pointer;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
+    }
+    .partner-pill:hover {
+      border-color: #E13A44;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+    }
+    .partner-pill.active {
+      border-color: #E13A44;
+      background-color: #ffffff;
+      box-shadow: 0 6px 16px rgba(225,58,68,0.15);
+    }
+    .partner-pill img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      border: 2px solid #e5e7eb;
+      transition: border-color 0.25s ease;
+      flex-shrink: 0;
+    }
+    .partner-pill.active img {
+      border-color: #E13A44;
+    }
+    .partner-pill .pill-name {
+      font-size: 13px;
+      font-weight: bold;
+      color: #333333;
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+    .partner-pill .pill-role {
+      font-size: 10px;
+      color: #9CA3AF;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .partner-pill.active .pill-role {
+      color: #E13A44;
+    }
+
+    /* Detail Panels for Partners and Counsels */
+    #partnerDetail, #counselDetail {
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+    #partnerDetail.fading, #counselDetail.fading {
+      opacity: 0;
+    }
+    .partner-photo-frame {
+      background-color: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 8px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+    .partner-photo-frame img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 6px;
+      display: block;
+    }
+    .partner-contact-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: bold;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background-color: #ffffff;
+      transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    }
+    .partner-contact-btn.linkedin { color: #0A66C2; }
+    .partner-contact-btn.linkedin:hover { border-color: #0A66C2; background-color: rgba(10,102,194,0.06); }
+    .partner-contact-btn.email { color: #E13A44; }
+    .partner-contact-btn.email:hover { border-color: #E13A44; background-color: rgba(225,58,68,0.06); }
+
     /* Scroll Reveal Animation */
     .reveal-on-scroll {
       opacity: 0;
@@ -78,33 +171,11 @@
       opacity: 1;
       transform: translateY(0);
     }
-
-     #team img {
-  width: 300px;
-       height: 348px;
-
-  object-fit: cover; 
-  object-position: top center; 
-  border: 1px solid #e5e7eb; 
-  border-radius: 6px; 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06); 
-  padding: 6px; 
-  background-color: #ffffff;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
-}
-
-#team img:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
-  border-color: #E13A44; 
-  transform: translateY(-2px);
-}
-
   </style>
 </head>
 <body class="bg-white min-h-screen flex flex-col lg:flex-row relative overflow-hidden">
 
   <!-- Background Vertical Grid Lines -->
-  <!-- We added more internal lines (4 lines, creating 5 columns) to match the subtle layout grid -->
   <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 flex lg:pr-[80px]">
     <div class="w-full h-full mx-8 lg:mx-[100px] border-x border-gray-200/60 flex justify-evenly">
       <div class="hidden sm:block w-[1px] h-full bg-gray-200/60"></div>
@@ -113,8 +184,6 @@
       <div class="hidden sm:block w-[1px] h-full bg-gray-200/60"></div>
     </div>
   </div>
-
-
 
   <!-- Desktop Right Red Sidebar -->
   <aside class="hidden lg:flex w-[80px] bg-brand-red fixed right-0 top-0 h-full flex-col justify-between items-center py-10 z-50 shadow-md">
@@ -127,7 +196,7 @@
       </a>
     </div>
     <div class="mb-4">
-      <a href=contact class="text-white hover:opacity-75 transition-opacity">
+      <a href=contact.html class="text-white hover:opacity-75 transition-opacity">
         <i class="far fa-envelope text-2xl"></i>
       </a>
     </div>
@@ -141,14 +210,12 @@
 
     <!-- Mobile Menu Stationary Text Layer -->
     <div id="mobileMenuContent" class="fixed inset-0 z-[65] flex-col hidden opacity-0 transition-opacity duration-[600ms] ease-in-out lg:hidden pointer-events-none">
-      <!-- Right aligned Navigation Links -->
       <nav class="flex flex-col items-end pr-8 pt-[120px] space-y-8 text-[18px] font-light pointer-events-auto">
-        <a href=index class="mobile-link brand-red">Home - 01</a>
-        <a href=about class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">About - 02</a>
-        <a href=practice-areas class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Practice Areas - 03</a>
-        <a href=team class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Team - 04</a>
-        <a href=contact class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Contact - 05</a>
-    
+        <a href=index.html class="mobile-link brand-red">Home - 01</a>
+        <a href=about.html class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">About - 02</a>
+        <a href=practice-areas.html class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Practice Areas - 03</a>
+        <a href=team.html class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Team - 04</a>
+        <a href=contact.html class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Contact - 05</a>
       </nav>
     </div>
     
@@ -156,18 +223,17 @@
     <header class="flex items-center justify-between pt-10 pb-6 px-8 lg:px-[100px] w-full relative z-[70] bg-transparent">
       
       <!-- Logo -->
-      <a href=index class="flex-shrink-0 hover:opacity-80 transition-opacity">
+      <a href=index.html class="flex-shrink-0 hover:opacity-80 transition-opacity">
         <img src="https://leadlaw.co.in/wp-content/uploads/2022/11/leadlaw-new-logo.png" alt="Lead Law" class="h-10 lg:h-12 w-auto object-contain">
       </a>
 
       <!-- Desktop Navigation -->
       <nav class="hidden lg:flex flex-grow justify-end space-x-10 pr-6">
-        <a href=index class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">01 - Home</a>
-        <a href=about class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">02 - About</a>
-
-        <a href=practice-areas class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">03 - Practice Areas</a>
-        <a href=team class="text-[14px] brand-red">04 - Team</a>
-        <a href=contact class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">05 - Contact</a>
+        <a href=index.html class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">01 - Home</a>
+        <a href=about.html class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">02 - About</a>
+        <a href=practice-areas.html class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">03 - Practice Areas</a>
+        <a href=team.html class="text-[14px] brand-red">04 - Team</a>
+        <a href=contact.html class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">05 - Contact</a>
       </nav>
 
       <!-- Mobile Animated Hamburger Button -->
@@ -181,67 +247,29 @@
 
      <section id="team" class="reveal-on-scroll px-8 lg:px-[100px] py-20 bg-transparent border-t border-gray-200 relative z-10">
       <h2 class="text-[32px] brand-red mb-12 bg-white/80 backdrop-blur-sm inline-block p-2 -ml-2 rounded-lg">Team</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl">
-        
-        <div class="bg-white/80 backdrop-blur-sm p-4 -ml-4 rounded-lg">
-          <img src="img/das.jpg" alt="Rohit Anand Das" class="w-full h-auto object-cover mb-6 shadow-sm">
-          <h3 class="text-[22px] font-bold text-dark mb-1">Rohit Anand Das</h3>
-          <p class="text-[12px] uppercase tracking-[0.2em] brand-red mb-4">Managing Partner</p>
-          <p class="text-[14px] text-gray-600 leading-relaxed mb-3">Rohit Anand Das is the Managing Partner of Lead Law and leads the firm's Banking & Infrastructure Finance, Infrastructure Project Advisory and Investment Advisory practices. 
-          He has advised on more than 100 public-private partnership (PPP) infrastructure transactions and regularly acts for financial institutions, infrastructure developers, investors and public sector entities on complex financing and infrastructure mandates.</p>
-        </div>
 
-        <div class="bg-white/80 backdrop-blur-sm p-4 -ml-4 rounded-lg">
-          <img src="img/sharma.jpg" alt="Lakshya Sharma" class="w-full h-auto object-cover mb-6 shadow-sm">
-          <h3 class="text-[22px] font-bold text-dark mb-1">Lakshya Sharma</h3>
-          <p class="text-[12px] uppercase tracking-[0.2em] brand-red mb-4">Partner</p>
-          <p class="text-[14px] text-gray-600 leading-relaxed">Lakshya Sharma advises domestic and international corporations, banks and non-banking financial companies on infrastructure projects, banking transactions and corporate advisory matters. His practice includes project advisory, financing transactions, corporate structuring and strategic investments.</p>
-        </div>
+      <!-- Partner Selector Pills -->
+      <div id="partnerPills" class="flex flex-wrap gap-4 mb-10 max-w-5xl"></div>
 
-          <div class="bg-white/80 backdrop-blur-sm p-4 -ml-4 rounded-lg">
-          <img src="img/singh.jpeg" alt="Harshdeep Singh" class="w-full h-auto object-cover mb-6 shadow-sm">
-          <h3 class="text-[22px] font-bold text-dark mb-1">Harshdeep Singh</h3>
-          <p class="text-[12px] uppercase tracking-[0.2em] brand-red mb-4">Partner</p>
-          <p class="text-[14px] text-gray-600 leading-relaxed">Harshdeep Singh advises on banking and finance, infrastructure and corporate transactions. His experience spans the development, financing, implementation, operation and maintenance of infrastructure projects, supporting clients throughout the project lifecycle.</p>
-        </div>
-        <div class="bg-white/80 backdrop-blur-sm p-4 -ml-4 rounded-lg">
-          <img src="img/kaushik.jpg" alt="Rohit Kaushik" class="w-full h-auto object-cover mb-6 shadow-sm">
-          <h3 class="text-[22px] font-bold text-dark mb-1">Rohit Kaushik</h3>
-          <p class="text-[12px] uppercase tracking-[0.2em] brand-red mb-4">Partner</p>
-          <p class="text-[14px] text-gray-600 leading-relaxed">Rohit Kaushik advises on banking and infrastructure finance, with experience across financing transactions and capital asset development projects. His practice includes lender-side advisory, project financing and transaction structuring for infrastructure and corporate mandates.</p>
-        </div>
+      <!-- Partner Detail Panel -->
+      <div id="partnerDetail" class="max-w-5xl bg-white/90 backdrop-blur-sm rounded-lg border border-gray-100 shadow-sm p-6 lg:p-10 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-14"></div>
 
+      <h3 class="text-[24px] brand-red mt-16 mb-8 bg-white/80 backdrop-blur-sm inline-block p-2 -ml-2 rounded-lg">Special Counsels</h3>
       
+      <!-- Special Counsel Selector Pills -->
+      <div id="counselPills" class="flex flex-wrap gap-4 mb-10 max-w-5xl"></div>
 
-      </div>
-
-      <h3 class="text-[24px] brand-red mt-16 mb-8 bg-white/80 backdrop-blur-sm inline-block p-2 -ml-2 rounded-lg">Specialist Counsels</h3>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl">
-        <div class="bg-white/80 backdrop-blur-sm p-4 -ml-4 rounded-lg">
-           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfTYQ2IwnebLqeTBIzCsyc13BJiAYtlwEkfgf3fbPif7gvT7woIeGrz0BA&s=10" alt="Deepam Borah" class="w-full h-auto object-cover mb-6 shadow-sm">
-           <p class="font-bold text-dark text-[15px]">Deepam Borah</p>
-           <p class="text-xs text-gray-500 mb-2">Special Counsel | Commercial Litigation, Real Estate & Tax</p>
-           <p class="text-[13px] text-gray-600">Deepam Borah advises on commercial litigation, real estate, banking and tax appellate matters. He has represented corporates and private clients in proceedings before the Gauhati High Court...</p>
-        </div>
-        <div class="bg-white/80 backdrop-blur-sm p-4 -ml-4 rounded-lg">
-           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfTYQ2IwnebLqeTBIzCsyc13BJiAYtlwEkfgf3fbPif7gvT7woIeGrz0BA&s=10" alt="Navarre Roy" class="w-full h-auto object-cover mb-6 shadow-sm">
-           <p class="font-bold text-dark text-[15px]">Navarre Roy</p>
-           <p class="text-xs text-gray-500 mb-2">Special Counsel | Intellectual Property Rights</p>
-           <p class="text-[13px] text-gray-600">Navarre Roy advises on the prosecution, protection and enforcement of intellectual property rights, with particular experience in trademarks, copyrights, domain name disputes and IP enforcement.</p>
-        </div>
-      </div>
+      <!-- Special Counsel Detail Panel (Image on Left) -->
+      <div id="counselDetail" class="max-w-5xl bg-white/90 backdrop-blur-sm rounded-lg border border-gray-100 shadow-sm p-6 lg:p-10 grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-14"></div>
+      
     </section>
-
-
-    <!-- About Section -->
-   
 
     <!-- Mobile Bottom Area (Hidden on Desktop) -->
     <div class="lg:hidden w-full relative mt-auto z-[80]">
       
       <!-- Mobile Red Social/Contact Bar -->
       <div class="bg-brand-red py-8 px-8 flex justify-between items-center text-white">
-        <a href=contact class="hover:opacity-80 transition-opacity">
+        <a href=contact.html class="hover:opacity-80 transition-opacity">
           <i class="far fa-envelope text-2xl"></i>
         </a>
         <div class="flex space-x-6 pr-4">
@@ -291,15 +319,9 @@
         revealElements.forEach(el => observer.observe(el));
     }
 
-    // 0. Disclaimer Modal Logic
-    const disclaimerModal = document.getElementById('disclaimerModal');
-    const disclaimerAcceptBtn = document.getElementById('disclaimerAcceptBtn');
-    const disclaimerCloseBtn = document.getElementById('disclaimerCloseBtn');
     const body = document.body;
-
-        body.classList.remove('overflow-hidden');
-        // Initialize the scroll reveal animations AFTER the user clicks accept
-        initScrollAnimations();
+    body.classList.remove('overflow-hidden');
+    initScrollAnimations();
 
     // 1. Mobile Menu Toggle Logic
     const menuToggleBtn = document.getElementById('menuToggleBtn');
@@ -325,8 +347,7 @@
         line3.classList.replace('bg-gray-800', 'bg-brand-red');
 
         // Slide in background
-        mobileMenuBg.classList.remove('hidden'); // Ensure block
-        // Small delay to allow display:block to apply before transforming
+        mobileMenuBg.classList.remove('hidden'); 
         requestAnimationFrame(() => {
             mobileMenuBg.classList.remove('translate-x-full');
             mobileMenuBg.classList.add('translate-x-0');
@@ -337,7 +358,7 @@
         setTimeout(() => {
             mobileMenuContent.classList.remove('opacity-0', 'pointer-events-none');
             mobileMenuContent.classList.add('opacity-100', 'pointer-events-auto');
-        }, 150); // Delay text fade in slightly for better effect
+        }, 150);
 
       } else {
         // Animate X back to hamburger
@@ -351,27 +372,215 @@
         mobileMenuContent.classList.remove('opacity-100', 'pointer-events-auto');
         mobileMenuContent.classList.add('opacity-0', 'pointer-events-none');
         
-        // Slide out background (Moves from left to right as requested)
+        // Slide out background
         mobileMenuBg.classList.remove('translate-x-0');
         mobileMenuBg.classList.add('translate-x-full');
 
         // Hide entirely after animation completes
         setTimeout(() => {
             mobileMenuContent.classList.add('hidden');
-            // Background is hidden naturally by translation but we keep it out of document flow just in case
         }, 800);
       }
     }
 
     menuToggleBtn.addEventListener('click', toggleMenu);
 
-    // Close menu when clicking a link
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
         if (isMenuOpen) toggleMenu();
       });
     });
+  </script>
 
+  <!-- Interactive Partner and Counsel Selectors -->
+  <script>
+    // --- PARTNERS DATA & LOGIC ---
+    const partners = [
+      {
+        id: 'das',
+        name: 'Rohit Anand Das',
+        role: 'Managing Partner',
+        img: 'img/das.jpeg',
+        bio: [
+          "Rohit Anand Das is the Managing Partner of Lead Law and leads the firm's Banking &amp; Infrastructure Finance, Infrastructure Project Advisory and Investment Advisory practices. His practice is centred on infrastructure financing, project development and strategic investments, with experience spanning public-private partnerships, project finance and regulatory advisory.",
+          "He has advised on more than 100 public-private partnership (PPP) infrastructure transactions and regularly acts for financial institutions, infrastructure developers, investors and public sector entities on complex financing and infrastructure mandates."
+        ],
+        linkedin: '#',
+        email: '#'
+      },
+      {
+        id: 'sharma',
+        name: 'Lakshya Sharma',
+        role: 'Partner',
+        img: 'img/sharma.jpeg',
+        bio: [
+          "Lakshya Sharma advises domestic and international corporations, banks and non-banking financial companies on infrastructure projects, banking transactions and corporate advisory matters. His practice includes project advisory, financing transactions, corporate structuring and strategic investments."
+        ],
+        linkedin: '#',
+        email: '#'
+      },
+      {
+        id: 'kaushik',
+        name: 'Rohit Kaushik',
+        role: 'Partner',
+        img: 'img/kaushik.jpeg',
+        bio: [
+          "Rohit Kaushik advises on banking and infrastructure finance, with experience across financing transactions and capital asset development projects. His practice includes lender-side advisory, project financing and transaction structuring for infrastructure and corporate mandates."
+        ],
+        linkedin: '#',
+        email: '#'
+      },
+      {
+        id: 'singh',
+        name: 'Harshdeep Singh',
+        role: 'Partner',
+        img: 'img/singh.jpeg',
+        bio: [
+          "Harshdeep Singh advises on banking and finance, infrastructure and corporate transactions. His experience spans the development, financing, implementation, operation and maintenance of infrastructure projects, supporting clients throughout the project lifecycle."
+        ],
+        linkedin: '#',
+        email: '#'
+      }
+    ];
+
+    const pillsContainer = document.getElementById('partnerPills');
+    const detailContainer = document.getElementById('partnerDetail');
+    let activePartnerId = partners[0].id;
+
+    function renderPills() {
+      pillsContainer.innerHTML = partners.map(p => `
+        <button type="button" class="partner-pill${p.id === activePartnerId ? ' active' : ''}" data-id="${p.id}" aria-label="View ${p.name}">
+          <img src="${p.img}" alt="${p.name}">
+          <span>
+            <span class="pill-name block">${p.name.split(' ')[0]}</span>
+            <span class="pill-role block">${p.role}</span>
+          </span>
+        </button>
+      `).join('');
+
+      pillsContainer.querySelectorAll('.partner-pill').forEach(btn => {
+        btn.addEventListener('click', () => selectPartner(btn.getAttribute('data-id')));
+      });
+    }
+
+    function renderDetail(partner) {
+      detailContainer.innerHTML = `
+        <div class="lg:col-span-2">
+          <span class="inline-block text-[11px] font-bold uppercase tracking-[0.15em] brand-red bg-white border border-red-100 rounded-full px-4 py-1 mb-5">${partner.role}</span>
+          <h3 class="text-[28px] lg:text-[34px] font-bold text-dark mb-4 leading-tight">${partner.name}</h3>
+          <div class="border-t border-gray-200 mb-6"></div>
+          ${partner.bio.map(p => `<p class="text-[14px] text-gray-600 leading-relaxed mb-4">${p}</p>`).join('')}
+        </div>
+        <div class="flex flex-col gap-4">
+          <div class="partner-photo-frame">
+            <img src="${partner.img}" alt="${partner.name}">
+          </div>
+          <div class="flex gap-3">
+            <a href="${partner.linkedin}" class="partner-contact-btn linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <a href="mailto:${partner.email === '#' ? '' : partner.email}" class="partner-contact-btn email"><i class="far fa-envelope"></i> Email</a>
+          </div>
+        </div>
+      `;
+    }
+
+    function selectPartner(id) {
+      if (id === activePartnerId) return;
+      activePartnerId = id;
+      renderPills();
+      detailContainer.classList.add('fading');
+      setTimeout(() => {
+        renderDetail(partners.find(p => p.id === id));
+        detailContainer.classList.remove('fading');
+      }, 200);
+    }
+
+    renderPills();
+    renderDetail(partners[0]);
+
+    // --- SPECIAL COUNSELS DATA & LOGIC ---
+    const specialCounsels = [
+      {
+        id: 'borah',
+        name: 'Deepam Borah',
+        role: 'Special Counsel',
+        subRole: 'Commercial Litigation, Real Estate & Tax',
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfTYQ2IwnebLqeTBIzCsyc13BJiAYtlwEkfgf3fbPif7gvT7woIeGrz0BA&s=10',
+        bio: [
+          "Deepam Borah advises on commercial litigation, real estate, banking and tax appellate matters. He has represented corporates and private clients in proceedings before the Gauhati High Court..."
+        ],
+        linkedin: '#',
+        email: '#'
+      },
+      {
+        id: 'roy',
+        name: 'Navarre Roy',
+        role: 'Special Counsel',
+        subRole: 'Intellectual Property Rights',
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfTYQ2IwnebLqeTBIzCsyc13BJiAYtlwEkfgf3fbPif7gvT7woIeGrz0BA&s=10',
+        bio: [
+          "Navarre Roy advises on the prosecution, protection and enforcement of intellectual property rights, with particular experience in trademarks, copyrights, domain name disputes and IP enforcement."
+        ],
+        linkedin: '#',
+        email: '#'
+      }
+    ];
+
+    const counselPillsContainer = document.getElementById('counselPills');
+    const counselDetailContainer = document.getElementById('counselDetail');
+    let activeCounselId = specialCounsels[0].id;
+
+    function renderCounselPills() {
+      counselPillsContainer.innerHTML = specialCounsels.map(c => `
+        <button type="button" class="partner-pill${c.id === activeCounselId ? ' active' : ''}" data-id="${c.id}" aria-label="View ${c.name}">
+          <img src="${c.img}" alt="${c.name}">
+          <span>
+            <span class="pill-name block">${c.name.split(' ')[0]}</span>
+            <span class="pill-role block">Special Counsel</span>
+          </span>
+        </button>
+      `).join('');
+
+      counselPillsContainer.querySelectorAll('.partner-pill').forEach(btn => {
+        btn.addEventListener('click', () => selectCounsel(btn.getAttribute('data-id')));
+      });
+    }
+
+    function renderCounselDetail(counsel) {
+      // Image rendering first in DOM so it sits on the left on desktop
+      counselDetailContainer.innerHTML = `
+        <div class="flex flex-col gap-4">
+          <div class="partner-photo-frame">
+            <img src="${counsel.img}" alt="${counsel.name}">
+          </div>
+          <div class="flex gap-3">
+            <a href="${counsel.linkedin}" class="partner-contact-btn linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <a href="mailto:${counsel.email === '#' ? '' : counsel.email}" class="partner-contact-btn email"><i class="far fa-envelope"></i> Email</a>
+          </div>
+        </div>
+        <div class="lg:col-span-2">
+          <span class="inline-block text-[11px] font-bold uppercase tracking-[0.15em] brand-red bg-white border border-red-100 rounded-full px-4 py-1 mb-2">${counsel.role}</span>
+          
+          <h3 class="text-[28px] lg:text-[34px] font-bold text-dark mb-4 leading-tight">${counsel.name}</h3>
+          <div class="border-t border-gray-200 mb-6"></div>
+          ${counsel.bio.map(p => `<p class="text-[14px] text-gray-600 leading-relaxed mb-4">${p}</p>`).join('')}
+        </div>
+      `;
+    }
+
+    function selectCounsel(id) {
+      if (id === activeCounselId) return;
+      activeCounselId = id;
+      renderCounselPills();
+      counselDetailContainer.classList.add('fading');
+      setTimeout(() => {
+        renderCounselDetail(specialCounsels.find(c => c.id === id));
+        counselDetailContainer.classList.remove('fading');
+      }, 200);
+    }
+
+    // Initialize Special Counsels
+    renderCounselPills();
+    renderCounselDetail(specialCounsels[0]);
   </script>
 </body>
 </html>
