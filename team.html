@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lead Law - Legal Consultancy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+    @import url('https://db.onlinewebfonts.com/c/e89eb1cff9eb261b0d77a4dea27f1ef1?family=Helvetica+W01+Light');
+
+    body {
+      font-family: 'Helvetica W01 Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      letter-spacing: 0.9px;
+    }
+
+#about p, #team p{ text-align:justify; }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Libre Baskerville', serif;
+    }
+
+    #home {
+        margin-top: 10rem;
+      }
+    @media (min-width: 1024px) {
+      #home {
+            margin-top: 18rem;
+           margin-left: 9rem;
+      }
+    }
+    
+
+    #home h1 {
+      font-weight: bold;
+    }
+
+    .brand-red {
+      color: #E13A44;
+    }
+
+    .bg-brand-red {
+      background-color: #E13A44;
+    }
+
+    .text-dark {
+      color: #333333;
+    }
+
+    .arrow-icon {
+      width: 48px;
+      height: 14px;
+      margin-right: 16px;
+    }
+
+    /* Soft Menu Background Slide */
+    .menu-bg-slide {
+      background: linear-gradient(to right, rgba(255,255,255,1) 90%, rgba(255,255,255,0) 100%);
+    }
+
+    /* Hamburger to X Animation styles */
+    .hamburger-line {
+      transition: transform 0.4s ease, opacity 0.3s ease, background-color 0.3s ease;
+    }
+
+    /* Scroll Reveal Animation */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.8s cubic-bezier(0.25, 1, 0.5, 1), transform 1.8s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #team img{
+        width:550px;
+        height:550px;
+    }
+  </style>
+</head>
+<body class="bg-white min-h-screen flex flex-col lg:flex-row relative overflow-hidden">
+
+  <!-- Background Vertical Grid Lines -->
+  <!-- We added more internal lines (4 lines, creating 5 columns) to match the subtle layout grid -->
+  <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 flex lg:pr-[80px]">
+    <div class="w-full h-full mx-8 lg:mx-[100px] border-x border-gray-200/60 flex justify-evenly">
+      <div class="hidden sm:block w-[1px] h-full bg-gray-200/60"></div>
+      <div class="hidden sm:block w-[1px] h-full bg-gray-200/60"></div>
+      <div class="hidden sm:block w-[1px] h-full bg-gray-200/60"></div>
+      <div class="hidden sm:block w-[1px] h-full bg-gray-200/60"></div>
+    </div>
+  </div>
+
+
+
+  <!-- Desktop Right Red Sidebar -->
+  <aside class="hidden lg:flex w-[80px] bg-brand-red fixed right-0 top-0 h-full flex-col justify-between items-center py-10 z-50 shadow-md">
+    <div class="flex flex-col space-y-8 mt-2">
+      <a href="#" class="text-white hover:opacity-75 transition-opacity">
+        <i class="fab fa-linkedin-in text-lg"></i>
+      </a>
+      <a href="#" class="text-white hover:opacity-75 transition-opacity">
+        <i class="fab fa-twitter text-lg"></i>
+      </a>
+    </div>
+    <div class="mb-4">
+      <a href=contact.html class="text-white hover:opacity-75 transition-opacity">
+        <i class="far fa-envelope text-2xl"></i>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content Wrapper (z-10 sits on top of background lines) -->
+  <div class="flex-1 flex flex-col min-h-screen lg:pr-[80px] relative z-10">
+
+    <!-- Mobile Menu Soft Sliding Background Layer -->
+    <div id="mobileMenuBg" class="fixed top-0 left-0 h-full w-[110vw] z-[60] transform translate-x-full transition-transform duration-[800ms] ease-in-out menu-bg-slide lg:hidden pointer-events-none"></div>
+
+    <!-- Mobile Menu Stationary Text Layer -->
+    <div id="mobileMenuContent" class="fixed inset-0 z-[65] flex-col hidden opacity-0 transition-opacity duration-[600ms] ease-in-out lg:hidden pointer-events-none">
+      <!-- Right aligned Navigation Links -->
+      <nav class="flex flex-col items-end pr-8 pt-[120px] space-y-8 text-[18px] font-light pointer-events-auto">
+        <a href=index.html class="mobile-link brand-red">Home - 01</a>
+        <a href=about.html class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">About - 02</a>
+        <a href=practice-areas.html class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Practice Areas - 03</a>
+        <a href=team.html class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Team - 04</a>
+        <a href=contact.html class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Contact - 05</a>
+    
+      </nav>
+    </div>
+    
+    <!-- Header -->
+    <header class="flex items-center justify-between pt-10 pb-6 px-8 lg:px-[100px] w-full relative z-[70] bg-transparent">
+      
+      <!-- Logo -->
+      <a href=index.html class="flex-shrink-0 hover:opacity-80 transition-opacity">
+        <img src="https://leadlaw.co.in/wp-content/uploads/2022/11/leadlaw-new-logo.png" alt="Lead Law" class="h-10 lg:h-12 w-auto object-contain">
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex flex-grow justify-end space-x-10 pr-6">
+        <a href=index.html class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">01 - Home</a>
+        <a href=about.html class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">02 - About</a>
+
+        <a href=practice-areas.html class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">03 - Practice Areas</a>
+        <a href=team.html class="text-[14px] brand-red">04 - Team</a>
+        <a href=contact.html class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">05 - Contact</a>
+      </nav>
+
+      <!-- Mobile Animated Hamburger Button -->
+      <button id="menuToggleBtn" class="lg:hidden flex flex-col justify-center items-center w-8 h-8 relative focus:outline-none z-[75]">
+        <span id="line1" class="hamburger-line bg-gray-800 h-[2px] w-6 rounded-sm absolute transform -translate-y-2 origin-center"></span>
+        <span id="line2" class="hamburger-line bg-gray-800 h-[2px] w-6 rounded-sm absolute transform"></span>
+        <span id="line3" class="hamburger-line bg-gray-800 h-[2px] w-6 rounded-sm absolute transform translate-y-2 origin-center"></span>
+      </button>
+      
+    </header>
+
+     <section id="team" class="reveal-on-scroll px-8 lg:px-[100px] py-20 bg-transparent border-t border-gray-200 relative z-10">
+      <h2 class="text-[32px] brand-red mb-12 bg-white/80 backdrop-blur-sm inline-block p-2 -ml-2 rounded-lg">Team</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl">
+        
+        <div class="bg-white/80 backdrop-blur-sm p-4 -ml-4 rounded-lg">
+          <img src="img/das.jpeg" alt="Rohit Anand Das" class="w-full h-auto object-cover mb-6 shadow-sm">
+          <h3 class="text-[22px] font-bold text-dark mb-1">Rohit Anand Das</h3>
+          <p class="text-[12px] uppercase tracking-[0.2em] brand-red mb-4">Managing Partner</p>
+          <p class="text-[14px] text-gray-600 leading-relaxed mb-3">Rohit Anand Das is the Managing Partner of Lead Law and leads the firm's Banking & Infrastructure Finance, Infrastructure Project Advisory and Investment Advisory practices. His practice is centred on infrastructure financing, project development and strategic investments, with experience spanning public-private partnerships, project finance and regulatory advisory.</p>
+          <p class="text-[14px] text-gray-600 leading-relaxed">He has advised on more than 100 public-private partnership (PPP) infrastructure transactions and regularly acts for financial institutions, infrastructure developers, investors and public sector entities on complex financing and infrastructure mandates.</p>
+        </div>
+
+        <div class="bg-white/80 backdrop-blur-sm p-4 -ml-4 rounded-lg">
+          <img src="img/sharma.jpeg" alt="Lakshya Sharma" class="w-full h-auto object-cover mb-6 shadow-sm">
+          <h3 class="text-[22px] font-bold text-dark mb-1">Lakshya Sharma</h3>
+          <p class="text-[12px] uppercase tracking-[0.2em] brand-red mb-4">Partner</p>
+          <p class="text-[14px] text-gray-600 leading-relaxed">Lakshya Sharma advises domestic and international corporations, banks and non-banking financial companies on infrastructure projects, banking transactions and corporate advisory matters. His practice includes project advisory, financing transactions, corporate structuring and strategic investments.</p>
+        </div>
+
+        <div class="bg-white/80 backdrop-blur-sm p-4 -ml-4 rounded-lg">
+          <img src="img/kaushik.jpeg" alt="Rohit Kaushik" class="w-full h-auto object-cover mb-6 shadow-sm">
+          <h3 class="text-[22px] font-bold text-dark mb-1">Rohit Kaushik</h3>
+          <p class="text-[12px] uppercase tracking-[0.2em] brand-red mb-4">Partner</p>
+          <p class="text-[14px] text-gray-600 leading-relaxed">Rohit Kaushik advises on banking and infrastructure finance, with experience across financing transactions and capital asset development projects. His practice includes lender-side advisory, project financing and transaction structuring for infrastructure and corporate mandates.</p>
+        </div>
+
+        <div class="bg-white/80 backdrop-blur-sm p-4 -ml-4 rounded-lg">
+          <img src="img/singh.jpeg" alt="Harshdeep Singh" class="w-full h-auto object-cover mb-6 shadow-sm">
+          <h3 class="text-[22px] font-bold text-dark mb-1">Harshdeep Singh</h3>
+          <p class="text-[12px] uppercase tracking-[0.2em] brand-red mb-4">Partner</p>
+          <p class="text-[14px] text-gray-600 leading-relaxed">Harshdeep Singh advises on banking and finance, infrastructure and corporate transactions. His experience spans the development, financing, implementation, operation and maintenance of infrastructure projects, supporting clients throughout the project lifecycle.</p>
+        </div>
+
+      </div>
+
+      <h3 class="text-[24px] brand-red mt-16 mb-8 bg-white/80 backdrop-blur-sm inline-block p-2 -ml-2 rounded-lg">Specialist Counsels</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl">
+        <div class="bg-white/80 backdrop-blur-sm p-4 -ml-4 rounded-lg">
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfTYQ2IwnebLqeTBIzCsyc13BJiAYtlwEkfgf3fbPif7gvT7woIeGrz0BA&s=10" alt="Deepam Borah" class="w-full h-auto object-cover mb-6 shadow-sm">
+           <p class="font-bold text-dark text-[15px]">Deepam Borah</p>
+           <p class="text-xs text-gray-500 mb-2">Special Counsel | Commercial Litigation, Real Estate & Tax</p>
+           <p class="text-[13px] text-gray-600">Deepam Borah advises on commercial litigation, real estate, banking and tax appellate matters. He has represented corporates and private clients in proceedings before the Gauhati High Court...</p>
+        </div>
+        <div class="bg-white/80 backdrop-blur-sm p-4 -ml-4 rounded-lg">
+           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfTYQ2IwnebLqeTBIzCsyc13BJiAYtlwEkfgf3fbPif7gvT7woIeGrz0BA&s=10" alt="Navarre Roy" class="w-full h-auto object-cover mb-6 shadow-sm">
+           <p class="font-bold text-dark text-[15px]">Navarre Roy</p>
+           <p class="text-xs text-gray-500 mb-2">Special Counsel | Intellectual Property Rights</p>
+           <p class="text-[13px] text-gray-600">Navarre Roy advises on the prosecution, protection and enforcement of intellectual property rights, with particular experience in trademarks, copyrights, domain name disputes and IP enforcement.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- About Section -->
+   
+
+    <!-- Mobile Bottom Area (Hidden on Desktop) -->
+    <div class="lg:hidden w-full relative mt-auto z-[80]">
+      
+      <!-- Mobile Red Social/Contact Bar -->
+      <div class="bg-brand-red py-8 px-8 flex justify-between items-center text-white">
+        <a href=contact.html class="hover:opacity-80 transition-opacity">
+          <i class="far fa-envelope text-2xl"></i>
+        </a>
+        <div class="flex space-x-6 pr-4">
+          <a href="#" class="hover:opacity-80 transition-opacity">
+            <i class="fab fa-linkedin-in text-xl"></i>
+          </a>
+          <a href="#" class="hover:opacity-80 transition-opacity">
+            <i class="fab fa-twitter text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile Footer -->
+      <footer class="py-6 text-center text-gray-400 text-[12px] bg-white">
+        <p>© 2026 by Lead Law</p>
+      </footer>
+
+      <!-- Mobile Floating Chat Button -->
+      <button class="absolute bottom-[60px] right-6 bg-[#D33640] text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:bg-red-700 transition-colors focus:outline-none border-2 border-[#D33640]">
+        <i class="fas fa-comment-alt text-xl"></i>
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- Scripts for Interactivity -->
+  <script>
+    // Initialize Scroll Animations
+    function initScrollAnimations() {
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Trigger when 15% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once revealed
+                }
+            });
+        }, observerOptions);
+
+        const revealElements = document.querySelectorAll('.reveal-on-scroll');
+        revealElements.forEach(el => observer.observe(el));
+    }
+
+    // 0. Disclaimer Modal Logic
+    const disclaimerModal = document.getElementById('disclaimerModal');
+    const disclaimerAcceptBtn = document.getElementById('disclaimerAcceptBtn');
+    const disclaimerCloseBtn = document.getElementById('disclaimerCloseBtn');
+    const body = document.body;
+
+        body.classList.remove('overflow-hidden');
+        // Initialize the scroll reveal animations AFTER the user clicks accept
+        initScrollAnimations();
+
+    // 1. Mobile Menu Toggle Logic
+    const menuToggleBtn = document.getElementById('menuToggleBtn');
+    const line1 = document.getElementById('line1');
+    const line2 = document.getElementById('line2');
+    const line3 = document.getElementById('line3');
+    
+    const mobileMenuBg = document.getElementById('mobileMenuBg');
+    const mobileMenuContent = document.getElementById('mobileMenuContent');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    let isMenuOpen = false;
+
+    function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
+      
+      if (isMenuOpen) {
+        // Animate hamburger to X
+        line1.style.transform = 'translateY(0) rotate(45deg)';
+        line2.style.opacity = '0';
+        line3.style.transform = 'translateY(0) rotate(-45deg)';
+        line1.classList.replace('bg-gray-800', 'bg-brand-red');
+        line3.classList.replace('bg-gray-800', 'bg-brand-red');
+
+        // Slide in background
+        mobileMenuBg.classList.remove('hidden'); // Ensure block
+        // Small delay to allow display:block to apply before transforming
+        requestAnimationFrame(() => {
+            mobileMenuBg.classList.remove('translate-x-full');
+            mobileMenuBg.classList.add('translate-x-0');
+        });
+
+        // Fade in content
+        mobileMenuContent.classList.remove('hidden');
+        setTimeout(() => {
+            mobileMenuContent.classList.remove('opacity-0', 'pointer-events-none');
+            mobileMenuContent.classList.add('opacity-100', 'pointer-events-auto');
+        }, 150); // Delay text fade in slightly for better effect
+
+      } else {
+        // Animate X back to hamburger
+        line1.style.transform = 'translateY(-8px) rotate(0)';
+        line2.style.opacity = '1';
+        line3.style.transform = 'translateY(8px) rotate(0)';
+        line1.classList.replace('bg-brand-red', 'bg-gray-800');
+        line3.classList.replace('bg-brand-red', 'bg-gray-800');
+
+        // Fade out content
+        mobileMenuContent.classList.remove('opacity-100', 'pointer-events-auto');
+        mobileMenuContent.classList.add('opacity-0', 'pointer-events-none');
+        
+        // Slide out background (Moves from left to right as requested)
+        mobileMenuBg.classList.remove('translate-x-0');
+        mobileMenuBg.classList.add('translate-x-full');
+
+        // Hide entirely after animation completes
+        setTimeout(() => {
+            mobileMenuContent.classList.add('hidden');
+            // Background is hidden naturally by translation but we keep it out of document flow just in case
+        }, 800);
+      }
+    }
+
+    menuToggleBtn.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking a link
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (isMenuOpen) toggleMenu();
+      });
+    });
+
+  </script>
+</body>
+</html>
