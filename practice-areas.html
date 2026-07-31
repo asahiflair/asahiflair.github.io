@@ -67,6 +67,19 @@
       transition: transform 0.4s ease, opacity 0.3s ease, background-color 0.3s ease;
     }
 
+    /* Nav Dropdown */
+    .nav-dropdown {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    }
+    .nav-item-group:hover .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
     /* Scroll Reveal Animation */
     .reveal-on-scroll {
       opacity: 0;
@@ -122,12 +135,23 @@
     <div id="mobileMenuContent" class="fixed inset-0 z-[65] flex-col hidden opacity-0 transition-opacity duration-[600ms] ease-in-out lg:hidden pointer-events-none">
       <!-- Right aligned Navigation Links -->
       <nav class="flex flex-col items-end pr-8 pt-[120px] space-y-8 text-[18px] font-light pointer-events-auto">
-        <a href=index class="mobile-link brand-red">Home - 01</a>
-        <a href=about class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">About - 02</a>
-        <a href=practice-areas class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Practice Areas - 03</a>
-        <a href=team class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Team - 04</a>
-        <a href=contact class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Contact - 05</a>
-    
+        <a href="index" class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Home - 01</a>
+        <a href="about" class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">About - 02</a>
+        <a href="practice-areas" class="mobile-link brand-red">Practice Areas - 03</a>
+        
+        <!-- Mobile Dropdown Group -->
+        <div class="flex flex-col items-end">
+          <button onclick="document.getElementById('mobilePeopleMenu').classList.toggle('hidden')" class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors flex items-center gap-2 focus:outline-none">
+            People - 04 <i class="fas fa-chevron-down text-[14px]"></i>
+          </button>
+          <div id="mobilePeopleMenu" class="hidden flex-col items-end space-y-4 mt-6 pr-4">
+            <a href="team" class="mobile-link text-gray-500 text-[16px] hover:text-[#E13A44] transition-colors">Partners</a>
+            <a href="people" class="mobile-link text-gray-500 text-[16px] hover:text-[#E13A44] transition-colors">Team</a>
+          </div>
+        </div>
+
+        <a href="insights" class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Insights - 05</a>
+        <a href="contact" class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Contact - 06</a>
       </nav>
     </div>
     
@@ -135,18 +159,29 @@
     <header class="flex items-center justify-between pt-10 pb-6 px-8 lg:px-[100px] w-full relative z-[70] bg-transparent">
       
       <!-- Logo -->
-      <a href=index class="flex-shrink-0 hover:opacity-80 transition-opacity">
+      <a href="index" class="flex-shrink-0 hover:opacity-80 transition-opacity">
         <img src="https://leadlaw.co.in/wp-content/uploads/2022/11/leadlaw-new-logo.png" alt="Lead Law" class="h-10 lg:h-12 w-auto object-contain">
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex flex-grow justify-end space-x-10 pr-6">
-        <a href=index class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">01 - Home</a>
-        <a href=about class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">02 - About</a>
-        <a href=practice-areas class="text-[14px] brand-red">03 - Practice Areas</a>
+      <nav class="hidden lg:flex flex-grow justify-end space-x-10 pr-6 items-center">
+        <a href="index" class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">01 - Home</a>
+        <a href="about" class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">02 - About</a>
+        <a href="practice-areas" class="text-[14px] brand-red">03 - Practice Areas</a>
 
-        <a href=team class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">04 - Team</a>
-        <a href=contact class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">05 - Contact</a>
+        <!-- Desktop Dropdown Menu -->
+        <div class="nav-item-group relative py-2">
+          <a href="team" class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">04 - People</a>
+          <div class="nav-dropdown absolute top-full left-0 pt-2 z-[80]">
+            <div class="bg-white rounded-lg shadow-lg border border-gray-100 py-2 min-w-[140px]">
+              <a href="team" class="block px-5 py-2 text-[13px] text-gray-600 hover:text-[#E13A44] hover:bg-gray-50 transition-colors whitespace-nowrap">Partners</a>
+              <a href="people" class="block px-5 py-2 text-[13px] text-gray-600 hover:text-[#E13A44] hover:bg-gray-50 transition-colors whitespace-nowrap">Team</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="insights" class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">05 - Insights</a>
+        <a href="contact" class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">06 - Contact</a>
       </nav>
 
       <!-- Mobile Animated Hamburger Button -->
@@ -230,10 +265,6 @@
       </div>
     </section>
 
-
-    <!-- About Section -->
-   
-
     <!-- Mobile Bottom Area (Hidden on Desktop) -->
     <div class="lg:hidden w-full relative mt-auto z-[80]">
       
@@ -289,15 +320,11 @@
         revealElements.forEach(el => observer.observe(el));
     }
 
-    // 0. Disclaimer Modal Logic
-    const disclaimerModal = document.getElementById('disclaimerModal');
-    const disclaimerAcceptBtn = document.getElementById('disclaimerAcceptBtn');
-    const disclaimerCloseBtn = document.getElementById('disclaimerCloseBtn');
+    // 0. Disclaimer Modal Logic (if present on other pages)
     const body = document.body;
-
-        body.classList.remove('overflow-hidden');
-        // Initialize the scroll reveal animations AFTER the user clicks accept
-        initScrollAnimations();
+    body.classList.remove('overflow-hidden');
+    // Initialize the scroll reveal animations
+    initScrollAnimations();
 
     // 1. Mobile Menu Toggle Logic
     const menuToggleBtn = document.getElementById('menuToggleBtn');
@@ -356,17 +383,22 @@
         // Hide entirely after animation completes
         setTimeout(() => {
             mobileMenuContent.classList.add('hidden');
-            // Background is hidden naturally by translation but we keep it out of document flow just in case
+            // Close any mobile submenus that were left open
+            const mobileSubMenu = document.getElementById('mobilePeopleMenu');
+            if (mobileSubMenu) mobileSubMenu.classList.add('hidden');
         }, 800);
       }
     }
 
     menuToggleBtn.addEventListener('click', toggleMenu);
 
-    // Close menu when clicking a link
+    // Close menu when clicking a standard link (ignore dropdown toggles)
     mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        if (isMenuOpen) toggleMenu();
+      link.addEventListener('click', (e) => {
+        // Do not close main menu if clicking the dropdown button
+        if(e.currentTarget.tagName.toLowerCase() !== 'button' && isMenuOpen) {
+           toggleMenu();
+        }
       });
     });
 
