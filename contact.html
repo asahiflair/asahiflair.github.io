@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lead Law - Legal Consultancy</title>
+  <title>Lead Law - Contact Us</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
   <style>
@@ -18,25 +18,10 @@
       letter-spacing: 0.9px;
     }
 
-#about p, #team p{ text-align:justify; }
+    #about p, #team p{ text-align:justify; }
 
     h1, h2, h3, h4, h5, h6 {
       font-family: 'Libre Baskerville', serif;
-    }
-
-    #home {
-        margin-top: 10rem;
-      }
-    @media (min-width: 1024px) {
-      #home {
-            margin-top: 18rem;
-           margin-left: 9rem;
-      }
-    }
-    
-
-    #home h1 {
-      font-weight: bold;
     }
 
     .brand-red {
@@ -51,12 +36,6 @@
       color: #333333;
     }
 
-    .arrow-icon {
-      width: 48px;
-      height: 14px;
-      margin-right: 16px;
-    }
-
     /* Soft Menu Background Slide */
     .menu-bg-slide {
       background: linear-gradient(to right, rgba(255,255,255,1) 90%, rgba(255,255,255,0) 100%);
@@ -65,6 +44,19 @@
     /* Hamburger to X Animation styles */
     .hamburger-line {
       transition: transform 0.4s ease, opacity 0.3s ease, background-color 0.3s ease;
+    }
+
+    /* Nav Dropdown */
+    .nav-dropdown {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    }
+    .nav-item-group:hover .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
 
     /* Scroll Reveal Animation */
@@ -83,7 +75,6 @@
 <body class="bg-white min-h-screen flex flex-col lg:flex-row relative overflow-hidden">
 
   <!-- Background Vertical Grid Lines -->
-  <!-- We added more internal lines (4 lines, creating 5 columns) to match the subtle layout grid -->
   <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 flex lg:pr-[80px]">
     <div class="w-full h-full mx-8 lg:mx-[100px] border-x border-gray-200/60 flex justify-evenly">
       <div class="hidden sm:block w-[1px] h-full bg-gray-200/60"></div>
@@ -92,8 +83,6 @@
       <div class="hidden sm:block w-[1px] h-full bg-gray-200/60"></div>
     </div>
   </div>
-
-
 
   <!-- Desktop Right Red Sidebar -->
   <aside class="hidden lg:flex w-[80px] bg-brand-red fixed right-0 top-0 h-full flex-col justify-between items-center py-10 z-50 shadow-md">
@@ -106,13 +95,13 @@
       </a>
     </div>
     <div class="mb-4">
-      <a href=contact.html class="text-white hover:opacity-75 transition-opacity">
+      <a href="contact" class="text-white hover:opacity-75 transition-opacity">
         <i class="far fa-envelope text-2xl"></i>
       </a>
     </div>
   </aside>
 
-  <!-- Main Content Wrapper (z-10 sits on top of background lines) -->
+  <!-- Main Content Wrapper -->
   <div class="flex-1 flex flex-col min-h-screen lg:pr-[80px] relative z-10">
 
     <!-- Mobile Menu Soft Sliding Background Layer -->
@@ -120,14 +109,15 @@
 
     <!-- Mobile Menu Stationary Text Layer -->
     <div id="mobileMenuContent" class="fixed inset-0 z-[65] flex-col hidden opacity-0 transition-opacity duration-[600ms] ease-in-out lg:hidden pointer-events-none">
-      <!-- Right aligned Navigation Links -->
       <nav class="flex flex-col items-end pr-8 pt-[120px] space-y-8 text-[18px] font-light pointer-events-auto">
-        <a href=index.html class="mobile-link brand-red">Home - 01</a>
-        <a href=about.html class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">About - 02</a>
-        <a href=practice-areas.html class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Practice Areas - 03</a>
-        <a href=team.html class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Team - 04</a>
-        <a href=contact.html class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Contact - 05</a>
-    
+        <a href="index" class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Home - 01</a>
+        <a href="about" class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">About - 02</a>
+        <a href="practice-areas" class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Practice Areas - 03</a>
+        <a href="team" class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Team - 04</a>
+        <a href="team" class="mobile-link text-gray-400 text-[14px] hover:text-[#E13A44] transition-colors -mt-4">Partners</a>
+        <a href="people" class="mobile-link text-gray-400 text-[14px] hover:text-[#E13A44] transition-colors -mt-4">People</a>
+        <a href="insights" class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Insights - 05</a>
+        <a href="contact" class="mobile-link brand-red">Contact - 06</a>
       </nav>
     </div>
     
@@ -135,19 +125,29 @@
     <header class="flex items-center justify-between pt-10 pb-6 px-8 lg:px-[100px] w-full relative z-[70] bg-transparent">
       
       <!-- Logo -->
-      <a href=index.html class="flex-shrink-0 hover:opacity-80 transition-opacity">
+      <a href="index" class="flex-shrink-0 hover:opacity-80 transition-opacity">
         <img src="https://leadlaw.co.in/wp-content/uploads/2022/11/leadlaw-new-logo.png" alt="Lead Law" class="h-10 lg:h-12 w-auto object-contain">
       </a>
 
-      <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex flex-grow justify-end space-x-10 pr-6">
-        <a href=index.html class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">01 - Home</a>
-        <a href=about.html class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">02 - About</a>
+      <!-- Desktop Navigation with Dropdown -->
+      <nav class="hidden lg:flex flex-grow justify-end items-center space-x-10 pr-6">
+        <a href="index" class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">01 - Home</a>
+        <a href="about" class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">02 - About</a>
+        <a href="practice-areas" class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">03 - Practice Areas</a>
 
-        <a href=practice-areas.html class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">03 - Practice Areas</a>
-        <a href=team.html class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">04 - Team</a>
-        <a href=contact.html class="text-[14px] brand-red">05 - Contact</a>
+        <!-- People Dropdown Menu -->
+        <div class="nav-item-group relative">
+          <a href="team" class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">04 - People</a>
+          <div class="nav-dropdown absolute top-full left-0 pt-4 z-[80]">
+            <div class="bg-white rounded-lg shadow-lg border border-gray-100 py-2 min-w-[140px]">
+              <a href="team" class="block px-5 py-2 text-[13px] text-gray-600 hover:text-[#E13A44] hover:bg-gray-50 transition-colors whitespace-nowrap">Partners</a>
+              <a href="people" class="block px-5 py-2 text-[13px] text-gray-600 hover:text-[#E13A44] hover:bg-gray-50 transition-colors whitespace-nowrap">Team</a>
+            </div>
+          </div>
+        </div>
 
+        <a href="insights" class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">05 - Insights</a>
+        <a href="contact" class="text-[14px] brand-red">06 - Contact</a>
       </nav>
 
       <!-- Mobile Animated Hamburger Button -->
@@ -159,7 +159,8 @@
       
     </header>
 
-     <section id="contact" class="reveal-on-scroll px-8 lg:px-[100px] pt-20 pb-10 bg-transparent border-t border-gray-200 relative z-10">
+    <!-- Contact Section -->
+    <section id="contact" class="reveal-on-scroll px-8 lg:px-[100px] pt-20 pb-10 bg-transparent relative z-10">
       <h2 class="text-[32px] brand-red mb-12 bg-white/80 backdrop-blur-sm inline-block p-2 -ml-2 rounded-lg">Contact Us</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-[14px] text-gray-600 max-w-5xl mb-16">
         
@@ -208,16 +209,12 @@
       </footer>
     </section>
 
-
-    <!-- About Section -->
-   
-
     <!-- Mobile Bottom Area (Hidden on Desktop) -->
     <div class="lg:hidden w-full relative mt-auto z-[80]">
       
       <!-- Mobile Red Social/Contact Bar -->
       <div class="bg-brand-red py-8 px-8 flex justify-between items-center text-white">
-        <a href=contact.html class="hover:opacity-80 transition-opacity">
+        <a href="contact" class="hover:opacity-80 transition-opacity">
           <i class="far fa-envelope text-2xl"></i>
         </a>
         <div class="flex space-x-6 pr-4">
@@ -258,7 +255,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target); // Stop observing once revealed
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -267,17 +264,12 @@
         revealElements.forEach(el => observer.observe(el));
     }
 
-    // 0. Disclaimer Modal Logic
-    const disclaimerModal = document.getElementById('disclaimerModal');
-    const disclaimerAcceptBtn = document.getElementById('disclaimerAcceptBtn');
-    const disclaimerCloseBtn = document.getElementById('disclaimerCloseBtn');
+    // Run animations since there is no modal block in this layout
     const body = document.body;
+    body.classList.remove('overflow-hidden');
+    initScrollAnimations();
 
-        body.classList.remove('overflow-hidden');
-        // Initialize the scroll reveal animations AFTER the user clicks accept
-        initScrollAnimations();
-
-    // 1. Mobile Menu Toggle Logic
+    // Mobile Menu Toggle Logic
     const menuToggleBtn = document.getElementById('menuToggleBtn');
     const line1 = document.getElementById('line1');
     const line2 = document.getElementById('line2');
@@ -301,8 +293,7 @@
         line3.classList.replace('bg-gray-800', 'bg-brand-red');
 
         // Slide in background
-        mobileMenuBg.classList.remove('hidden'); // Ensure block
-        // Small delay to allow display:block to apply before transforming
+        mobileMenuBg.classList.remove('hidden'); 
         requestAnimationFrame(() => {
             mobileMenuBg.classList.remove('translate-x-full');
             mobileMenuBg.classList.add('translate-x-0');
@@ -313,7 +304,7 @@
         setTimeout(() => {
             mobileMenuContent.classList.remove('opacity-0', 'pointer-events-none');
             mobileMenuContent.classList.add('opacity-100', 'pointer-events-auto');
-        }, 150); // Delay text fade in slightly for better effect
+        }, 150); 
 
       } else {
         // Animate X back to hamburger
@@ -327,14 +318,13 @@
         mobileMenuContent.classList.remove('opacity-100', 'pointer-events-auto');
         mobileMenuContent.classList.add('opacity-0', 'pointer-events-none');
         
-        // Slide out background (Moves from left to right as requested)
+        // Slide out background
         mobileMenuBg.classList.remove('translate-x-0');
         mobileMenuBg.classList.add('translate-x-full');
 
         // Hide entirely after animation completes
         setTimeout(() => {
             mobileMenuContent.classList.add('hidden');
-            // Background is hidden naturally by translation but we keep it out of document flow just in case
         }, 800);
       }
     }

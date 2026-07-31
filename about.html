@@ -67,6 +67,50 @@
       transition: transform 0.4s ease, opacity 0.3s ease, background-color 0.3s ease;
     }
 
+    /* Nav Dropdown */
+    .nav-dropdown {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    }
+    .nav-item-group:hover .nav-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* Firm Highlights Sidebar Panel */
+    .highlights-panel {
+      background-color: rgba(255,255,255,0.85);
+      border: 1px solid #e5e7eb;
+      border-left: 4px solid #E13A44;
+      /* border-radius: 10px; */
+      padding: 2.25rem 2rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+    .highlights-stat + .highlights-stat {
+      border-top: 1px solid #e5e7eb;
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .highlights-stat .stat-number {
+      font-family: 'Helvetica W01 Light', serif;
+      font-size: 36px;
+      font-weight: bold;
+      color: #E13A44;
+      line-height: 1;
+    }
+    .highlights-stat .stat-label {
+      color: #6B7280;
+      font-size: 13px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
     /* Scroll Reveal Animation */
     .reveal-on-scroll {
       opacity: 0;
@@ -106,7 +150,7 @@
       </a>
     </div>
     <div class="mb-4">
-      <a href=contact.html class="text-white hover:opacity-75 transition-opacity">
+      <a href=contact class="text-white hover:opacity-75 transition-opacity">
         <i class="far fa-envelope text-2xl"></i>
       </a>
     </div>
@@ -122,11 +166,14 @@
     <div id="mobileMenuContent" class="fixed inset-0 z-[65] flex-col hidden opacity-0 transition-opacity duration-[600ms] ease-in-out lg:hidden pointer-events-none">
       <!-- Right aligned Navigation Links -->
       <nav class="flex flex-col items-end pr-8 pt-[120px] space-y-8 text-[18px] font-light pointer-events-auto">
-        <a href=index.html class="mobile-link brand-red">Home - 01</a>
-        <a href=about.html class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">About - 02</a>
-        <a href=practice-areas.html class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Practice Areas - 03</a>
-        <a href=team.html class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Team - 04</a>
-        <a href=contact.html class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Contact - 05</a>
+        <a href=index class="mobile-link brand-red">Home - 01</a>
+        <a href=about class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">About - 02</a>
+        <a href=practice-areas class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Practice Areas - 03</a>
+        <a href=team class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Team - 04</a>
+        <a href=team class="mobile-link text-gray-400 text-[14px] hover:text-[#E13A44] transition-colors -mt-4">Partners</a>
+        <a href=people class="mobile-link text-gray-400 text-[14px] hover:text-[#E13A44] transition-colors -mt-4">People</a>
+        <a href=insights class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Insights - 05</a>
+        <a href=contact class="mobile-link text-gray-800 hover:text-[#E13A44] transition-colors">Contact - 06</a>
     
       </nav>
     </div>
@@ -135,18 +182,29 @@
     <header class="flex items-center justify-between pt-10 pb-6 px-8 lg:px-[100px] w-full relative z-[70] bg-transparent">
       
       <!-- Logo -->
-      <a href=index.html class="flex-shrink-0 hover:opacity-80 transition-opacity">
+      <a href=index class="flex-shrink-0 hover:opacity-80 transition-opacity">
         <img src="https://leadlaw.co.in/wp-content/uploads/2022/11/leadlaw-new-logo.png" alt="Lead Law" class="h-10 lg:h-12 w-auto object-contain">
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex flex-grow justify-end space-x-10 pr-6">
-        <a href=index.html class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">01 - Home</a>
-        <a href=about.html class="text-[14px] brand-red">02 - About</a>
+      <nav class="hidden lg:flex flex-grow justify-end items-center space-x-10 pr-6">
+        <a href=index class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">01 - Home</a>
+        <a href=about class="text-[14px] brand-red">02 - About</a>
 
-        <a href=practice-areas.html class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">03 - Practice Areas</a>
-        <a href=team.html class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">04 - Team</a>
-        <a href=contact.html class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">05 - Contact</a>
+        <a href=practice-areas class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">03 - Practice Areas</a>
+
+        <div class="nav-item-group relative">
+          <a href=team class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">04 - People</a>
+          <div class="nav-dropdown absolute top-full left-0 pt-4 z-[80]">
+            <div class="bg-white rounded-lg shadow-lg border border-gray-100 py-2 min-w-[140px]">
+              <a href="team" class="block px-5 py-2 text-[13px] text-gray-600 hover:text-[#E13A44] hover:bg-gray-50 transition-colors whitespace-nowrap">Partners</a>
+              <a href="people" class="block px-5 py-2 text-[13px] text-gray-600 hover:text-[#E13A44] hover:bg-gray-50 transition-colors whitespace-nowrap">Team</a>
+            </div>
+          </div>
+        </div>
+
+        <a href=insights class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">05 - Insights</a>
+        <a href=contact class="text-[14px] text-gray-500 hover:text-[#E13A44] transition-colors">06 - Contact</a>
       </nav>
 
       <!-- Mobile Animated Hamburger Button -->
@@ -160,12 +218,39 @@
 
     <!-- Main Hero Section -->
      <section id="about" class="reveal-on-scroll px-8 lg:px-[100px] py-20 bg-transparent relative z-10">
-      <h2 class="text-[32px] brand-red mb-8">About Lead Law</h2>
-      <div class="max-w-4xl text-gray-600 space-y-6 text-[15px] leading-[1.8] bg-white/80 backdrop-blur-sm p-4 -ml-4 rounded-lg">
-        <p>Lead Law is an Indian law firm with a practice focused on infrastructure, project finance and strategic investment. The firm advises lenders, investors, developers, corporates and public sector institutions on transactions, projects and disputes that shape infrastructure development and capital deployment across India.</p>
-        <p>Recognised among Infralogic's Top 10 firms in Asia for PPP Project Finance for four consecutive years, Lead Law has developed particular strength in advising on mandates where financing structures, regulatory frameworks and commercial execution intersect. The firm's experience spans complex financing transactions, infrastructure projects, corporate investments, capital markets and dispute resolution, providing clients with coordinated legal support across the lifecycle of significant commercial mandates.</p>
-        <p>Beyond its legal practice, Lead Law has established a multidisciplinary advisory platform integrating legal, financial and investment expertise. This approach enables the firm to advise on matters requiring a combination of legal analysis, financial evaluation and commercial judgement, particularly in infrastructure, project finance and strategic investments.</p>
-        <p>With offices across India's principal commercial centers and an established network of associate lawyers in 16 states, the firm advises clients on domestic and cross-border matters while maintaining a consistent standard of service across jurisdictions. Lead Law's clients include financial institutions, infrastructure developers, corporates, investors, family offices and public sector entities. The firm also works alongside government authorities and regulatory institutions on matters involving policy development, infrastructure implementation and strategic transactions.</p>
+      <h2 class="text-[32px] mb-8">About <span class="brand-red">Lead Law</span></h2>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+
+        <div class="lg:col-span-2 text-gray-600 space-y-6 text-[15px] leading-[1.8] bg-white/80 backdrop-blur-sm p-4 -ml-4 rounded-lg">
+          <p>Lead Law is an Indian law firm with a practice focused on infrastructure, project finance and strategic investment. The firm advises lenders, investors, developers, corporates and public sector institutions on transactions, projects and disputes that shape infrastructure development and capital deployment across India.</p>
+          <p>Recognised among Infralogic's Top 10 firms in Asia for PPP Project Finance for four consecutive years, Lead Law has developed particular strength in advising on mandates where financing structures, regulatory frameworks and commercial execution intersect. The firm's experience spans complex financing transactions, infrastructure projects, corporate investments, capital markets and dispute resolution, providing clients with coordinated legal support across the lifecycle of significant commercial mandates.</p>
+          <p>Beyond its legal practice, Lead Law has established a multidisciplinary advisory platform integrating legal, financial and investment expertise. This approach enables the firm to advise on matters requiring a combination of legal analysis, financial evaluation and commercial judgement, particularly in infrastructure, project finance and strategic investments.</p>
+          <p>With offices across India's principal commercial centers and an established network of associate lawyers in 16 states, the firm advises clients on domestic and cross-border matters while maintaining a consistent standard of service across jurisdictions. Lead Law's clients include financial institutions, infrastructure developers, corporates, investors, family offices and public sector entities. The firm also works alongside government authorities and regulatory institutions on matters involving policy development, infrastructure implementation and strategic transactions.</p>
+        </div>
+
+        <div class="lg:col-span-1 lg:sticky lg:top-24">
+          <div class="highlights-panel">
+            <h3 class="brand-red text-[22px] font-bold uppercase leading-tight mb-8">Firm<br>Highlights</h3>
+
+            <div class="highlights-stat">
+              <div class="stat-number">Top 10</div>
+              <div class="stat-label">PPP Project Finance Firm in Asia (Infralogic)</div>
+            </div>
+            <div class="highlights-stat">
+              <div class="stat-number">6</div>
+              <div class="stat-label">Offices Across India</div>
+            </div>
+            <div class="highlights-stat">
+              <div class="stat-number">16</div>
+              <div class="stat-label">States with Associate Network</div>
+            </div>
+            <div class="highlights-stat">
+              <div class="stat-number">100+</div>
+              <div class="stat-label">Public-Private Partnership Transactions Advised</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -178,7 +263,7 @@
       
       <!-- Mobile Red Social/Contact Bar -->
       <div class="bg-brand-red py-8 px-8 flex justify-between items-center text-white">
-        <a href=contact.html class="hover:opacity-80 transition-opacity">
+        <a href=contact class="hover:opacity-80 transition-opacity">
           <i class="far fa-envelope text-2xl"></i>
         </a>
         <div class="flex space-x-6 pr-4">
